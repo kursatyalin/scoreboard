@@ -1,31 +1,47 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="team">
-                <h3 class="heading">HOME</h3>
-                <div class="counter" id="home-score">0</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard App</title>
+    <link rel="preload" href="fonts/CursedTimerULiL.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <main class="scoreboard">
+        <section class="teams-container">
+            <!-- Home Team -->
+            <article class="team" aria-labelledby="home-heading">
+                <h3 id="home-heading" class="heading">HOME</h3>
+                <div class="counter" id="home-score" aria-live="polite">0</div>
                 <div class="btn-group">
-                    <button class="btn" onclick="incrementHomeScoreByOne()">+1</button>
-                    <button class="btn" onclick="incrementHomeScoreByTwo()">+2</button>
-                    <button class="btn" onclick="incrementHomeScoreByThree()">+3</button>
+                    <button class="btn" onclick="incrementScore('home', 1)" aria-label="Add 1 point to home team">+1</button>
+                    <button class="btn" onclick="incrementScore('home', 2)" aria-label="Add 2 points to home team">+2</button>
+                    <button class="btn" onclick="incrementScore('home', 3)" aria-label="Add 3 points to home team">+3</button>
                 </div>
-            </div>
-            <div class="team">
-                <h3 class="heading">GUEST</h3>
-                <div class="counter" id="guest-score">0</div>
+            </article>
+
+            <!-- Guest Team -->
+            <article class="team" aria-labelledby="guest-heading">
+                <h3 id="guest-heading" class="heading">GUEST</h3>
+                <div class="counter" id="guest-score" aria-live="polite">0</div>
                 <div class="btn-group">
-                    <button class="btn" onclick="incrementGuestScoreByOne()">+1</button>
-                    <button class="btn" onclick="incrementGuestScoreByTwo()">+2</button>
-                    <button class="btn" onclick="incrementGuestScoreByThree()">+3</button>
+                    <button class="btn" onclick="incrementScore('guest', 1)" aria-label="Add 1 point to guest team">+1</button>
+                    <button class="btn" onclick="incrementScore('guest', 2)" aria-label="Add 2 points to guest team">+2</button>
+                    <button class="btn" onclick="incrementScore('guest', 3)" aria-label="Add 3 points to guest team">+3</button>
                 </div>
-            </div>
-            <div class="reset">
-                <button id="reset-btn" onclick="resetScore()">RESET</button>
-                </div>
+            </article>
+        </section>
+
+        <!-- Reset Button -->
+        <div class="reset-container">
+            <button id="reset-btn" onclick="resetScores()" aria-label="Reset all scores">RESET</button>
         </div>
-        <script src="index.js"></script>
-    </body>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
 </html>

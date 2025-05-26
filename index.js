@@ -1,46 +1,26 @@
-let homeScore = 0;
-let homeScoreEl = document.getElementById("home-score");
-let guestScore = 0;
-let guestScoreEl = document.getElementById("guest-score");
+// index.js
+(function() {
+    let homeScore = 0;
+    const homeScoreEl = document.getElementById("home-score");
+    let guestScore = 0;
+    const guestScoreEl = document.getElementById("guest-score");
 
+    function incrementScore(team, points) {
+        if (team === 'home') {
+            homeScore += points;
+            homeScoreEl.textContent = homeScore;
+        } else {
+            guestScore += points;
+            guestScoreEl.textContent = guestScore;
+        }
+    }
 
-function incrementHomeScoreByOne() {
-    homeScore += 1;
-    homeScoreEl.textContent = homeScore
-}
+    function resetScores() {
+        homeScore = guestScore = 0;
+        homeScoreEl.textContent = guestScoreEl.textContent = 0;
+    }
 
-
-function incrementHomeScoreByTwo() {
-    homeScore += 2;
-    homeScoreEl.textContent = homeScore;
-}
-
-function incrementHomeScoreByThree() {
-    homeScore += 3;
-    homeScoreEl.textContent = homeScore;
-}
-
-function incrementGuestScoreByOne() {
-    guestScore += 1;
-    guestScoreEl.textContent = guestScore
-}
-
-
-function incrementGuestScoreByTwo() {
-    guestScore += 2;
-    guestScoreEl.textContent = guestScore;
-}
-
-function incrementGuestScoreByThree() {
-    guestScore += 3;
-    guestScoreEl.textContent = guestScore;
-}
-
-function resetScore() {
-    guestScore = 0;
-    guestScoreEl.textContent = guestScore;
-    
-    homeScore = 0;
-    homeScoreEl.textContent = homeScore;
-    
-}
+    // Make functions available globally
+    window.incrementScore = incrementScore;
+    window.resetScores = resetScores;
+})();
